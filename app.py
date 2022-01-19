@@ -1,4 +1,4 @@
-
+from user import User
 def menuPrincipal():
     print("#Bee.Hive#")
     print("Store| Labs | Thinks | Log in")
@@ -20,7 +20,6 @@ def menuPrincipal():
             break
         elif landingPageOption in ['Login','login']:
             logIn()
-            break
         else:
             continue
         
@@ -33,8 +32,23 @@ def thinksPages():
     print("welcome to the thinks pages")
     
 def logIn():
-    print("welcome to log in")
-
-
-
+    while True:
+        option = input("LogIn or SignUp:")
+        if option in ['SignUp', 'signup']:
+            valid = False
+            while valid == False:
+                newUsername = input("Type your username:")
+                newpassword = input("Type your password:")
+                newUser = User(newUsername,newpassword)
+                valid=newUser.dataStoring()
+            break
+        elif option in ['LogIn', 'login']: 
+            valid = False
+            while valid == False:
+                username = input("username:")
+                password = input("password:")
+                user = User(username,password)
+                valid=user.userExists()
+            break
+        
 menuPrincipal()
